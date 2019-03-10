@@ -10,8 +10,8 @@ var Patient = require('./models/patient');
 var Doctor = require('./models/doctor');
 
 // connect to mongoose
-mongoose.connect('mongodb://localhost:27017/luma-health-db', { useNewUrlParser: true });
-var db = mongoose.connection;
+// mongoose.connect('mongodb://localhost:27017/luma-health-db', { useNewUrlParser: true });
+// var db = mongoose.connection;
 
 app.get('/', function(req, res) {
   res.send('Navigate to /api/doctors or /api/appointments');
@@ -167,3 +167,4 @@ app.delete('/api/doctors/:_id', function(req, res) {
 
 app.listen(3000);
 console.log('Running on port 3000...');
+module.exports = app;

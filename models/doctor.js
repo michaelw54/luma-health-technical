@@ -1,7 +1,25 @@
 var mongoose = require('mongoose');
 
 // import workingHours model
-var workingHours = require('./workingHours');
+workingHoursSchema = mongoose.Schema({
+  Day: {
+    type: String,
+    required: true
+  },
+  startTime: {
+    type: String,
+  },
+  endTime: {
+    type: String,
+  },
+  // used for breaks in between work shift
+  breakStart: {
+    type: String
+  },
+  breakEnd: {
+    type: String
+  }
+});
 
 doctorSchema = mongoose.Schema({
   name: {
@@ -11,7 +29,7 @@ doctorSchema = mongoose.Schema({
   // weekly availability is an array of workingHours from Monday to Friday
   // only the first 7 elements of the array are considered
   weeklyAvailability: {
-    type: [ {type: mongoose.Schema.Types.ObjectId, ref: 'workingHours'} ],
+    type: [ workingHoursSchema ],
     required: true
   }
 });

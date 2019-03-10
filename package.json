@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon app.js",
+    "test": "mocha --recursive --exit"
   },
   "author": "Michael Wu",
   "license": "ISC",
@@ -14,6 +15,10 @@
     "mongoose": "^5.4.18"
   },
   "devDependencies": {
-    "nodemon": "^1.18.10"
+    "chai": "^4.2.0",
+    "mocha": "^6.0.2",
+    "mockgoose": "^8.0.1",
+    "nodemon": "^1.18.10",
+    "supertest": "^4.0.0"
   }
 }

@@ -6,6 +6,46 @@ var mongoose = require('mongoose');
 var Patient = require('./patient');
 var Doctor = require('./doctor');
 
+patientSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  }
+});
+
+workingHoursSchema = mongoose.Schema({
+  Day: {
+    type: String,
+    required: true
+  },
+  startTime: {
+    type: String,
+  },
+  endTime: {
+    type: String,
+  },
+  // used for breaks in between work shift
+  breakStart: {
+    type: String
+  },
+  breakEnd: {
+    type: String
+  }
+});
+
+doctorSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  },
+  // weekly availability is an array of workingHours from Monday to Friday
+  // only the first 7 elements of the array are considered
+  weeklyAvailability: {
+    type: [ workingHoursSchema ],
+    required: true
+  }
+});
+
 // appointment schema
 var appointmentSchema = mongoose.Schema({
   startTime: {
@@ -18,11 +58,11 @@ var appointmentSchema = mongoose.Schema({
   },
   // store patient id
   patient: {
-    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Patient'}
+    type: { patientSchema }
   },
   // store doctor id
   doctor: {
-    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Doctor'}
+    type: { doctorSchema }
   },
   create_date: {
     type: Date,
