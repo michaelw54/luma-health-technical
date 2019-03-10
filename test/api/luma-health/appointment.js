@@ -27,7 +27,7 @@ var weeklyAvailability = [
   defaultHours
 ];
 
-describe('POST, GET, UPDATE, DELETE appointments', function() {
+describe('POST,GET,UPDATE,DELETE appointments', function() {
   before(function(done) {
     conn.connect().then(function() {
       done();
@@ -68,7 +68,7 @@ describe('POST, GET, UPDATE, DELETE appointments', function() {
   it('getting appointment successful', function(done) {
     request(app).get('/api/appointments')
       .then(function(res) {
-        Appointment.findOne( { startTime: new Date('December 17, 1995 03:24:00')} ).then(function(appointment) {
+        Appointment.findOne( {startTime: new Date('December 17, 1995 03:24:00')} ).then(function(appointment) {
           expect(appointment.doctor.name === 'Joe');
           expect(appointment.endTime === new Date('December 17, 2005 03:24:00'));
         });
@@ -78,4 +78,45 @@ describe('POST, GET, UPDATE, DELETE appointments', function() {
         done(err);
       });
   });
+
+  it('updating appointment successful', function(done) {
+    Appointment.findOne( {startTime: new Date('December 17, 1995 03:24:00')} ).then(function(appointment) {
+      var id = appointment._id;
+      request(app).put('/api/appointments/' + id)
+        .send({ startTime: new Date('August 10, 1995 03:24:00'),
+              endTime: new Date('July 23, 2005 03:24:00'),
+              patient: { name: 'BillyBobJoe' },
+              doctor: { name: 'Spongebob', weeklyAvailability: weeklyAvailability }
+          })
+        .then(function(res) {
+          const body = res.body;
+          expect(body).to.contain.property('_id');
+          expect(body.startTime == new Date('August 10, 1995 03:24:00'));
+          expect(body.endTime === new Date('July 23, 2005 03:24:00'));
+          expect(body.patient.name === 'BillyBobJoe');
+          expect(body.doctor.name === 'Spongebob');
+          done();
+        })
+        .catch(function(err) {
+          done(err);
+        });
+    });
+  });
+
+  it('deleting appointment successful', function(done) {
+    Appointment.findOne( {startTime: new Date('August 10, 1995 03:24:00')} ).then(function(appointment) {
+      var id = appointment._id;
+      request(app).delete('/api/appointments/' + id)
+        .then(function(res) {
+          expect(res.n === 1);
+          expect(res.ok === 1);
+          expect(res.deletedCount === 1);
+          done();
+        })
+        .catch(function(err) {
+          done(err);
+        });
+    });
+  });
+
 });

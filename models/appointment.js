@@ -99,5 +99,5 @@ module.exports.updateAppointment = function(id, appointment, options, callback) 
 
 module.exports.deleteAppointment = function(id, callback) {
   var query = { _id: id };
-  Appointment.deleteOne(query, callback);
+  Appointment.findOneAndDelete(query, callback);
 }

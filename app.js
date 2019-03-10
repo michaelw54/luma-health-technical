@@ -102,6 +102,29 @@ app.post('/api/patients', function(req, res) {
   });
 });
 
+// update patient by id
+app.put('/api/patients/:_id', function(req, res) {
+  var id = req.params._id;
+  var patient = req.body;
+  Patient.updatePatient(id, patient, {}, function(err, patient) {
+    if (err) {
+      throw err;
+    }
+    res.json(patient);
+  });
+});
+
+// delete patient by id
+app.delete('/api/patients/:_id', function(req, res) {
+  var id = req.params._id;
+  Patient.deletePatient(id, function(err, patient) {
+    if (err) {
+      throw err;
+    }
+    res.json(patient);
+  });
+});
+
 // retrieve all doctors
 app.get('/api/doctors', function(req, res) {
   Doctor.getDoctors(function(err, doctors) {
