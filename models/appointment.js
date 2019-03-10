@@ -1,22 +1,30 @@
 var mongoose = require('mongoose');
 
+/* import Patient and Doctor models to allow appointmentSchema to store
+   information relating Patient and Doctor
+*/
+var Patient = require('./patient');
+var Doctor = require('./doctor');
+
 // appointment schema
 var appointmentSchema = mongoose.Schema({
-  date:{
+  startTime: {
     type: Date,
     required: true
   },
-  patient:{
-    // temporary
-    type: String,
+  endTime: {
+    type: Date,
     required: true
   },
-  doctor:{
-    // temporary
-    type: String,
-    required: true
+  // store patient id
+  patient: {
+    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Patient'}
   },
-  create_date:{
+  // store doctor id
+  doctor: {
+    type: {type: mongoose.Schema.Types.ObjectId, ref: 'Doctor'}
+  },
+  create_date: {
     type: Date,
     default: Date.now
   }
@@ -41,7 +49,8 @@ module.exports.addAppointment = function(appointment, callback) {
 module.exports.updateAppointment = function(id, appointment, options, callback) {
   var query = { _id: id };
   var update = {
-    date: appointment.date,
+    startTime: appointment.startTime,
+    endTime: appointment.endTime,
     patient: appointment.patient,
     doctor:  appointment.doctor
   }

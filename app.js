@@ -45,7 +45,7 @@ app.post('/api/appointments', function (req, res) {
       throw err;
     }
     res.json(appointment);
-    });
+  });
 });
 
 // update appointment by id
@@ -82,7 +82,7 @@ app.get('/api/patients', function(req, res) {
 });
 
 // get patient by id
-app.get('api/patients:_id', function(req, res) {
+app.get('api/patients/:_id', function(req, res) {
   Patient.getPatientById(req.params._id, function(err, patient) {
     if (err) {
       throw err;
@@ -113,8 +113,29 @@ app.get('/api/doctors', function(req, res) {
 });
 
 // get doctor by id
-app.get('/api/doctors:_id', function(req, res) {
+app.get('/api/doctors/:_id', function(req, res) {
   Doctor.getDoctorById(req.params._id, function(err, doctor) {
+    if (err) {
+      throw err;
+    }
+    res.json(doctor);
+  });
+});
+
+// get doctor availability by id
+app.get('/api/doctors/:_id', function(req, res) {
+  Doctor.getDoctorById(req.params._id, function(err, doctor) {
+    if (err) {
+      throw err;
+    }
+    res.json(doctor.weeklyAvailability);
+  });
+});
+
+// update doctor by id
+app.put('/api/doctors/:_id', function(req, res) {
+  var id = req.params._id;
+  Doctor.updateDoctor(id, req.body, {}, function(err, doctor) {
     if (err) {
       throw err;
     }
@@ -126,6 +147,17 @@ app.get('/api/doctors:_id', function(req, res) {
 app.post('/api/doctors', function(req, res) {
   var doctor = req.body;
   Doctors.addDoctor(doctor, function(err, doctor) {
+    if (err) {
+      throw err;
+    }
+    res.json(doctor);
+  });
+});
+
+// delete doctor by id
+app.delete('/api/doctors/:_id', function(req, res) {
+  var id = req.params._id;
+  Doctors.deleteDoctor(id, function(err, doctor) {
     if (err) {
       throw err;
     }
