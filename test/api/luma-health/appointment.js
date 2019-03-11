@@ -11,6 +11,7 @@ var Doctor = require('../../../models/doctor');
 
 // default hours for the purpose of testing
 var defaultHours = {
+  Day: "Monday",
   startTime: "9:00 AM",
   endTime: "5:00 PM",
   breakStart: "12:30 PM",

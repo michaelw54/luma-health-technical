@@ -1,5 +1,8 @@
 var mongoose = require('mongoose');
 
+// to prevent messages about the useFindandModify method being deprecated
+mongoose.set('useFindAndModify', false);
+
 /* import Patient and Doctor models to allow appointmentSchema to store
    information relating Patient and Doctor
 */
@@ -58,11 +61,11 @@ var appointmentSchema = mongoose.Schema({
   },
   // store patient id
   patient: {
-    type: { patientSchema }
+    type: patientSchema
   },
   // store doctor id
   doctor: {
-    type: { doctorSchema }
+    type: doctorSchema
   },
   create_date: {
     type: Date,

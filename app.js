@@ -169,7 +169,7 @@ app.put('/api/doctors/:_id', function(req, res) {
 // add new doctor
 app.post('/api/doctors', function(req, res) {
   var doctor = req.body;
-  Doctors.addDoctor(doctor, function(err, doctor) {
+  Doctor.addDoctor(doctor, function(err, doctor) {
     if (err) {
       throw err;
     }
@@ -180,7 +180,7 @@ app.post('/api/doctors', function(req, res) {
 // delete doctor by id
 app.delete('/api/doctors/:_id', function(req, res) {
   var id = req.params._id;
-  Doctors.deleteDoctor(id, function(err, doctor) {
+  Doctor.deleteDoctor(id, function(err, doctor) {
     if (err) {
       throw err;
     }

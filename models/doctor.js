@@ -54,7 +54,7 @@ module.exports.updateDoctor = function(id, doctor, options, callback) {
     name: doctor.name,
     weeklyAvailability: doctor.weeklyAvailability
   }
-  Doctors.findOneAndUpdate(query, update, options, callback);
+  Doctor.findOneAndUpdate(query, update, options, callback);
 }
 
 // add new doctors
