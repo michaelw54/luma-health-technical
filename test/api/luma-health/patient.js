@@ -16,7 +16,7 @@ describe('POST,GET,UPDATE,DELETE patients', function() {
   });
 
   after(function(done) {
-    conn.connect().then(function() {
+    conn.close().then(function() {
       done();
     }).catch(function(err) {
       done(err);
