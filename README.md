@@ -126,32 +126,32 @@ An example of the body could look something like this:
 {
 	"startTime": "December 17, 1995 03:24:00",
 	"endTime": "December 17, 1995 03:24:00",
-  	"patient": {
-		"name": "testPatient"
-	},
+  "patient": {
+	  "name": "testPatient"
+	 },
   "doctor": {
     "name": "testDoctor",
     "weeklyAvailability": [
 			{
-  				"Day": "Monday",
-  				"startTime": "9:00 AM",
-  				"endTime": "5:00 PM",
-  				"breakStart": "12:30 PM",
-  				"breakEnd": "1:30 PM"
+  			"Day": "Monday",
+  			"startTime": "9:00 AM",
+  			"endTime": "5:00 PM",
+  			"breakStart": "12:30 PM",
+  			"breakEnd": "1:30 PM"
 			},
-			{
-  				"Day": "Tuesday",
-  				"startTime": "9:00 AM",
-  				"endTime": "5:00 PM",
-  				"breakStart": "12:30 PM",
-  				"breakEnd": "1:30 PM"
+      {
+  			"Day": "Tuesday",
+  			"startTime": "9:00 AM",
+  			"endTime": "5:00 PM",
+  			"breakStart": "12:30 PM",
+  			"breakEnd": "1:30 PM"
 			},
-			{
-  				"Day": "Wednesday",
-  				"startTime": "9:00 AM",
-  				"endTime": "5:00 PM",
-  				"breakStart": "12:30 PM",
-  				"breakEnd": "1:30 PM"
+      {
+  			"Day": "Wednesday",
+  			"startTime": "9:00 AM",
+  			"endTime": "5:00 PM",
+  			"breakStart": "12:30 PM",
+  			"breakEnd": "1:30 PM"
 			}
 	  ]
   }
