@@ -80,6 +80,10 @@ module.exports.getAppointments = function(callback, limit) {
   Appointment.find(callback).limit(limit);
 }
 
+module.exports.getAppointmentsByDoctorName = function(doctorName, callback) {
+  Appointment.find({ doctor: { $elemMatch: { name: doctorName } } }, callback);
+}
+
 // get Appointment
 module.exports.getAppointmentById = function(id, callback) {
   Appointment.findById(id, callback);

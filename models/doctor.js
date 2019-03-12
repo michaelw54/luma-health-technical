@@ -29,8 +29,7 @@ doctorSchema = mongoose.Schema({
   // weekly availability is an array of workingHours from Monday to Friday
   // only the first 7 elements of the array are considered
   weeklyAvailability: {
-    type: [ workingHoursSchema ],
-    required: true
+    type: [ workingHoursSchema ]
   }
 });
 
@@ -40,6 +39,10 @@ var Doctor = module.exports = mongoose.model("Doctor", doctorSchema);
 // get all doctors
 module.exports.getDoctors = function(callback, limit) {
   Doctor.find(callback).limit(limit);
+}
+
+module.exports.getDoctorsbyName = function(name, callback) {
+  Doctor.find({name: name}, callback);
 }
 
 // get doctor by id

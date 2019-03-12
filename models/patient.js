@@ -15,6 +15,10 @@ module.exports.getPatients = function(callback, limit) {
   Patient.find(callback).limit(limit);
 }
 
+module.exports.getPatientsByName = function(name, callback) {
+  Patient.find({name: name}).exec(callback);
+}
+
 module.exports.getPatientById = function(id, callback) {
   Patient.findById(id, callback);
 }

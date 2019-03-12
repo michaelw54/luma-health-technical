@@ -2,9 +2,9 @@
   "name": "luma-health-technical",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "server.js",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "nodemon server.js",
     "test": "mocha --recursive --exit"
   },
   "author": "Michael Wu",

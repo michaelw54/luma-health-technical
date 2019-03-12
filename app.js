@@ -28,8 +28,18 @@ app.get('/api/appointments', function(req, res) {
 });
 
 // get appointment by id
-app.get('/api/appointments/:_id', function(req, res) {
-  Appointment.getAppointmentById(req.params._id, function(err, appointment) {
+// app.get('/api/appointments/:_id', function(req, res) {
+//   Appointment.getAppointmentById(req.params._id, function(err, appointment) {
+//     if (err) {
+//       throw err;
+//     }
+//     res.json(appointment);
+//   });
+// });
+
+// get appointment by doctor name
+app.get('/api/appointments/:doctorName', function(req, res) {
+  Appointment.getAppointmentsByDoctorName(req.params.doctorName, function(err, appointment) {
     if (err) {
       throw err;
     }
@@ -81,15 +91,24 @@ app.get('/api/patients', function(req, res) {
   });
 });
 
-// get patient by id
-app.get('api/patients/:_id', function(req, res) {
-  Patient.getPatientById(req.params._id, function(err, patient) {
+app.get('/api/patients/:name', function(req, res) {
+  Patient.getPatientsByName(req.params.name, function(err, patients) {
     if (err) {
       throw err;
     }
-    res.json(patient);
+    res.json(patients);
   });
-});
+})
+
+// get patient by id
+// app.get('api/patients/:_id', function(req, res) {
+//   Patient.getPatientById(req.params._id, function(err, patient) {
+//     if (err) {
+//       throw err;
+//     }
+//     res.json(patient);
+//   });
+// });
 
 // create patient
 app.post('/api/patients', function(req, res) {
@@ -136,22 +155,22 @@ app.get('/api/doctors', function(req, res) {
 });
 
 // get doctor by id
-app.get('/api/doctors/:_id', function(req, res) {
-  Doctor.getDoctorById(req.params._id, function(err, doctor) {
+// app.get('/api/doctors/:_id', function(req, res) {
+//   Doctor.getDoctorById(req.params._id, function(err, doctor) {
+//     if (err) {
+//       throw err;
+//     }
+//     res.json(doctor);
+//   });
+// });
+
+// get doctors by name
+app.get('/api/doctors/:name', function(req, res) {
+  Doctor.getDoctorsbyName(req.params.name, function(err, doctor) {
     if (err) {
       throw err;
     }
     res.json(doctor);
-  });
-});
-
-// get doctor availability by id
-app.get('/api/doctors/:_id', function(req, res) {
-  Doctor.getDoctorById(req.params._id, function(err, doctor) {
-    if (err) {
-      throw err;
-    }
-    res.json(doctor.weeklyAvailability);
   });
 });
 
