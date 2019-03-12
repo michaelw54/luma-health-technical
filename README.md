@@ -124,7 +124,7 @@ Here is how the body should be structured:
 An example of the body could look something like this:
 ```
 {
-	"startTime": "December 17, 1995 03:24:00",
+  "startTime": "December 17, 1995 03:24:00",
 	"endTime": "December 17, 1995 03:24:00",
   "patient": {
 	  "name": "testPatient"
@@ -164,12 +164,12 @@ startTime and endTime of an appointment expect Date objects because unique appoi
 
 To fetch all the appointments in a JSON, use the `GET` request as below.  
 ```
-GET http://localhost:3000/appointments
+GET http://localhost:3000/api/appointments
 ```
 
 To fetch appointments under a doctor's name
 ```
-GET http://localhost:3000/appointments/DOCTOR-NAME
+GET http://localhost:3000/api/appointments/DOCTOR-NAME
 ```
 
 ### Testing
