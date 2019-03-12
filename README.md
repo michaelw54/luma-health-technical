@@ -3,14 +3,14 @@
 A REST Api designed to manage doctor schedules, keep track of patient information, and schedule appointments.
 
 ## Key Functionalities
--- manage availability of doctors
--- book an appointment with a doctor, specifying starting time and ending time
--- find patients and their personal information
--- track appointments and check appointment details
+* manage availability of doctors
+* book an appointment with a doctor, specifying starting time and ending time
+* find patients and their personal information
+* track appointments and check appointment details
 
 ## Instructions
 
-### Set up MongoDB
+### Setting up MongoDB
 run the following commands in separate shells
 ```
 mongod
@@ -76,7 +76,7 @@ POST http://localhost:3000/api/patients
 }
 ```
 
-#### View patient information
+#### Viewing patient information
 
 To get a list of every patient  
 ```
@@ -160,7 +160,7 @@ An example of the body could look something like this:
 All fields in weeklyAvailability are strings, where Day can be expressed as { Monday, Tuesday, Wednesday, ... Sunday }, since the start and end of shifts are expected to reoccur over multiple weeks.
 startTime and endTime of an appointment expect Date objects because unique appointments occur only once.
 
-#### View appointments
+#### Viewing appointments
 
 To fetch all the appointments in a JSON, use the `GET` request as below.  
 ```
